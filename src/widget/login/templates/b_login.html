@@ -1,0 +1,23 @@
+<form action="{{ action if action else '' }}" method="{{ method if method else 'POST' }}" 
+{% if form_attrs %}{%- if form_attrs for (key, value) in form_attrs.items() %} {{ key }}="{{ value }}" {%- endfor %}{% endif %}
+>
+  <label for="username">Username {{ '<strong style="color: #d00;">*</strong>' if username and 'required' in username and username.required }}</label><br>
+  <input 
+  type="text" 
+  name="username" 
+  id="username" 
+  class="{{ username.class if username and 'class' in username }}"
+  ><br>
+
+  <label for="password">Password {{ '<strong style="color: #d00;">*</strong>' if password and 'required' in password and password.required }}</label><br>
+  <input type="password" name="password" id="password" class="{{ password.class if password and 'class' in password }}"><br>
+
+  <input 
+  type="{{ button.type if button and 'type' in button else 'submit' }}"
+  value="{{ button.value if button and 'value' in button else 'Login'}}"
+  id="{{ button.id if button and 'id' in button }}"
+  class="{{ button.class if button and 'class' in button }}"
+  name="{{ button.name if button and 'name' in button }}"
+  style="{{ button.style if button and 'style' in button }}"
+  >
+</form>
